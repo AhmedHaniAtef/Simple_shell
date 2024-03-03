@@ -16,6 +16,11 @@
 #include <string.h>
 #include <sys/types.h>
 #include <pwd.h>
+#include <ctype.h> 
+#include <sys/wait.h>
+#include <signal.h>
+#include <sys/resource.h>
+#include <time.h>
 /*************************************************************/
 
 #define STRING_MATCH (0)
@@ -31,6 +36,7 @@ typedef enum
    EXPORT,
    SHELL_BUILT_IN,
    EXECUTABLE_OR_ERROR,
+   EXIT,
 }COMMANDS_t;
 /*************************************************************/
 
@@ -78,6 +84,55 @@ void echo_command_handle(char **command);
  */
 void export_command_handle(char **command);
 
+/**
+ * @brief handles replacing a variable with its value
+ * @param command full command
+ */
+void evaluate_expression(char **command);
+
+/**
+ * @brief replace a substring by another string 
+ * @param str main string 
+ * @param substr string will be replaced  
+ * @param replace new string eill replace substring
+ * @param final final string after replacement
+ */
+void replace_substing(char *str, char *substr, char *replace, char *final);
+
+/**
+ * @brief used for handle non builtin shell commands
+ * @param command full command
+ */
+void execute_command(char **command);
+
+/**
+ * @brief Set the up environment object
+ */
+void setup_environment();
+
+/**
+ * @brief edit commands for non builtin commands
+ * @param command full command
+ */
+void edit_command(char **command);
+
+/**
+ * @brief write to log file 
+ * @param message 
+ */
+void write_to_log(const char *message);
+
+/**
+ * @brief clear the content of log file
+ */
+void clear_log_file();
+
+/**
+ * @brief convert integer to string
+ * @param num integer value
+ * @param str string
+ */
+void int_to_string(int num, char *str);
 
 /*************************************************************/
 
