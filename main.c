@@ -50,7 +50,6 @@ void setup_environment()
 
 /**
  * @brief Contains main operation of shell
- * 
  */
 void shell(void)
 {
@@ -590,7 +589,7 @@ void write_to_log(const char *message)
 {
 
     FILE *file;
-    file = fopen("logfile.txt", "a"); // "a" mode appends to the file if it exists, otherwise creates a new file
+    file = fopen("/home/ahmed-hani/OS/Labs/1/logfile.txt", "a"); // "a" mode appends to the file if it exists, otherwise creates a new file
     if (file == NULL) {
         printf("Error opening file!\n");
         exit(1);
@@ -611,7 +610,7 @@ void write_to_log(const char *message)
 void clear_log_file() 
 {
     FILE *file;
-    file = fopen("logfile.txt", "w+"); // "w+" mode truncates the file if it exists, otherwise creates a new file
+    file = fopen("/home/ahmed-hani/OS/Labs/1/logfile.txt", "w+"); // "w+" mode truncates the file if it exists, otherwise creates a new file
     if (file == NULL) {
         printf("Error opening file!\n");
         exit(1);
