@@ -316,7 +316,7 @@ void export_command_handle(char **command)
                     }
                     else
                     {
-                        strcpy(replaced_by[export_counter], temp_str + 1);
+                        strcpy(replaced_by[export_counter], temp_str);
                     }
                 }
                 export_counter++;
